@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="bigger-profile">
+  <div class="smaller-profile">
+      <h3>Bienvenido: {{ name }} al Portal del Cliente</h3>
+      <p>Seleccione la opción deseada:</p>
+      <p class='text-center'><a href='{{url_for("credencial")}}' class='btn btn-success'>Credencial</a></p>
+      <p class='text-center'><a href='{{url_for("vermovimientos")}}' class='btn btn-success'>Ver sus movimientos</a></p>
+      <p class='text-center'><a href='{{url_for("versaldos")}}' class='btn btn-success'>Conocer su saldo actual</a></p>
+  </div>
+</div>
+{% endblock %}

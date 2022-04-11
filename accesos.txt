@@ -1,0 +1,7 @@
+administrador:
+gperez@gmail.com
+bomuda
+
+user prueba:
+cbianchi@gmail.com
+bomuda

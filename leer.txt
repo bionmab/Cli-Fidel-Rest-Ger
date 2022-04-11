@@ -1,0 +1,30 @@
+Creación del entorno “(env)”:
+python -m venv env
+
+Activar el entorno:
+:Estando dentro de la carpeta scripts:
+Activate
+
+Desactivar entorno:
+Deactivate
+
+De esta forma, se instalarán dentro del entorno “(env)” el framework y las dependencias con las que trabajaremos:
+pip install flask
+pip install flask-jsonpify 
+pip install flask-sqlalchemy 
+pip install flask-restful
+pip install Flask-WTF
+pip install email-validator
+
+Para enviar emails:
+pip install Flask-Mail
+
+Next, Change following settings in your Gmail and Account
+
+i) Gmail->Settings->Forwarding and POP/IMAP->Enable IMAP
+ii) Account->Security->Less secure app Access-> On
+
+Dependencias de nuestra aplicacion:
+pip freeze
+
+

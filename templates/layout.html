@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+  <html lang="es">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Max 130 caracteres en la descripción del sitio-->
+    <meta name="description" content="Sitio de Fidelizacion de clientes">
+    <!--Max 10 palabras clave de busqueda-->
+    <meta name="keywords" content="clientes, fidelizacion, restaurantes">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HIGH CLIFFE - CliFidelApp</title>
+    <!--Link hacia el icono del logo en pestaña del sitio-->
+    <link rel="shortcut icon" href="/static/img/favicon.png">
+
+    <!-- Bootstrap CSS 4.4.1 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <!--
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    -->
+    <!--Google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- Enlace ruta hoja de estilos personalizada -->
+    <link rel="stylesheet" href="/static/css/style.css">
+    <!--fontawesome: iconos-->
+    <script src="https://kit.fontawesome.com/f31f9c6459.js" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-md bg-light navbar-light">
+      <div class='container'>
+        <!-- Logo -->
+        <img src="/static/img/logo.jpg" alt="" width="150" height="70">
+
+        <!-- Toggler/collapsibe Button 
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>-->
+
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav ml-auto">
+            {% if current_user.is_authenticated %} <!--Si el usuario se autentico-->
+              <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+              </li>
+            {% endif %}
+            {% if not current_user.is_authenticated %} <!--Si el usuario no se autentico-->
+              <li class="nav-item">
+                <a class="nav-link" href="/"> Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/login">Ingreso</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/signup">Registro</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/contact">Contacto</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/privacy">Política</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/about">Acerca De</a>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!--Mensajes al usuario-->
+    <div class='container mt-4'>
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+    </div>
+
+    <!--Bloque de datos particular de cada html-->
+    {% block content %}
+    {% endblock %}
+  
+    <!--Barra del Footer-->
+    <footer class="bg-dark text-center text-white">
+      <!--Div contenedor-->
+      <div class="container p-4 pb-0">
+        <h5>Nuestras Redes Sociales</h5>
+        <!--Seccion: Redes Sociales-->
+        <section class="mb-4">
+          <!--Facebook-->
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
+
+          <!--Twitter-->
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-twitter"></i></a>
+
+          <!--Google-->
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-google"></i></a>
+
+          <!--Instagram-->
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-instagram"></i></a>
+
+          <!--Linkedin-->
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-linkedin-in"></i></a>
+
+          <!--Wahtsapp-->
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-whatsapp"></i></a>
+        </section>
+      </div>
+
+      <!--Div contenedor Copyright-->
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2021 Copyright:
+        <a class="text-white" href="https://www.instagram.com/kyrios.soft/">Kyrios Soft</a>
+      </div>
+    </footer>
+  </body>
+</html>
+  

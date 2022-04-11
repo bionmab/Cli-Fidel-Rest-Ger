@@ -1,0 +1,166 @@
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+}
+
+.separador {
+  width:100%;
+  padding-top: 5%;
+}
+
+.login-registro {
+  width:100%;
+  padding-top: 5%;
+  font-size: 15px;
+}
+
+/* imagen del privacy y textos */
+.bigger-privacy {
+  width:100%;
+  height:800px;
+  background-image:url("/static/img/bannercontacto.jpg");
+  background-size:cover;
+  background-position:center;
+  position:relative;
+}
+
+.smaller-privacy {
+    width:100%;
+    height:30%;
+    background-color:rgba(0,0,0,0.3);
+    position:absolute;
+    top:20%;
+    text-align:center;
+    color:white;
+}
+
+.smaller-privacy p {
+    padding-left: 15%;
+    padding-right: 15%;
+  }
+
+  .smaller-privacy h2 {
+    padding-top: 10px;
+  }
+/* fin imagen del privacy y textos */
+
+/* imagen del index y textos */
+  .bigger-index {
+    width:100%;
+    height:800px;
+    background-image:url("/static/img/bannerprincipal.jpg");
+    background-size:cover;
+    background-position:center;
+    position:relative;
+  }
+  
+  .smaller-index {
+    width:100%;
+    height:30%;
+    background-color:rgba(0,0,0,0.3);
+    position:absolute;
+    top:20%;
+    text-align:center;
+    color:white;
+  }
+
+  .smaller-index p {
+    padding-left: 15%;
+    padding-right: 15%;
+  }
+
+  .smaller-index h1 {
+    padding-top: 10px;
+  }
+  /* fin imagen del index y textos */
+
+  /* imagen del about y textos */
+  .bigger-about {
+    width:100%;
+    height:800px;
+    background-image:url("/static/img/bannerabout.jpg");
+    background-size:cover;
+    background-position:center;
+    position:relative;
+  }
+  
+  .smaller-about {
+    width:100%;
+    height:30%;
+    background-color:rgba(0,0,0,0.3);
+    position:absolute;
+    top:20%;
+    text-align:center;
+    color:white;
+  }
+
+  .smaller-about p {
+    padding-left: 15%;
+    padding-right: 15%;
+  }
+
+  .smaller-about h2 {
+    padding-top: 10px;
+  }
+  /* fin imagen del about y textos */
+
+  /* imagen del profileadmin y textos */
+  .bigger-profile-admin {
+    width:100%;
+    height:800px;
+    background-image:url("/static/img/banneradmin.jpg");
+    background-size:cover;
+    background-position:center;
+    position:relative;
+  }
+  
+  .smaller-profile-admin {
+    width:100%;
+    height:20%;
+    background-color:rgba(0,0,0,0.3);
+    position:absolute;
+    top:20%;
+    text-align:center;
+    color:white;
+  }
+
+  .smaller-profile-admin p {
+    padding-left: 15%;
+    padding-right: 15%;
+  }
+
+  .smaller-profile-admin h3 {
+    padding-top: 10px;
+  }
+  /* fin imagen del profileadmin y textos */
+
+  /* imagen del profile y textos */
+  .bigger-profile {
+    width:100%;
+    height:800px;
+    background-image:url("/static/img/bannerprofile.jpg");
+    background-size:cover;
+    background-position:center;
+    position:relative;
+  }
+  
+  .smaller-profile {
+    width:100%;
+    height:30%;
+    background-color:rgba(0,0,0,0.3);
+    position:absolute;
+    top:20%;
+    text-align:center;
+    color:white;
+  }
+
+  .smaller-profile p {
+    padding-left: 15%;
+    padding-right: 15%;
+  }
+
+  .smaller-profile h3 {
+    padding-top: 10px;
+  }
+  /* fin imagen del profile y textos */

@@ -1,0 +1,65 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="container">
+  <h3 class='text-center text-muted mb-3'>Visualización de Movimientos</h3>
+
+  <p class='text-right'><a href='{{url_for("profile")}}' class='btn btn-success'>Volver</a></p>
+  
+    <div class="table-responsive-sm">
+     <table class='table table-sm'>
+        <thead>
+          <th>IdMov</th>
+          <th>Fecha</th>
+          <th>Tipo Movimiento</th>
+          <th>Comprobante</th>
+          <th>Puntos</th>
+        </thead>
+        <tbody>
+            {% for mov in movimientos.items %}
+            <tr> 
+                <td>{{mov.id}}</td>
+                <td>{{mov.fechamov}}</td>
+                <td>{{mov.tipomov}}</td>
+                <td>{{mov.comprobante}}</td>
+                {% if mov.tipomov=='CREDITO' %}
+                  <td>{{mov.puntos}}</td> 
+                {% else %}   
+                  <td>-{{mov.puntos}}</td>
+                {% endif %}  
+            </tr>
+            {%endfor%}
+        </tbody>
+      </table>
+    </div>
+
+      <!--Controles de paginacion-->
+      <nav aria-label="Page navigation example">
+                  <ul class="pagination">
+                      {% if movimientos.has_prev %}
+                          <li class="page-item"> <a class="page-link" href="{{ url_for('vermovimientos', page=movimientos.prev_num) }}">Anterior</a></li>
+                      {% else %}
+                          <li class="page-item"><a class="page-link btn disabled" href="#">Anterior</a></li>
+                      {% endif %}
+
+              {% for page in movimientos.iter_pages(left_edge=3, right_edge=3) %}
+                {% if page %}
+                  {% if page==movimientos.page %}
+                      <li class="page-item active"><a class="page-link" href="{{ url_for('vermovimientos', page=page) }}">{{ page }}</a></li>
+                  {% else %}
+                      <li class="page-item"><a class="page-link" href="{{ url_for('vermovimientos', page=page) }}">{{ page }}</a></li>
+                  {% endif %}
+                {% else %}
+                    <li class="page-item disabled" id="example_ellipsis"><a href="#" class="page-link">…</a></li> 
+                {% endif %}
+              {% endfor %}
+
+                      {% if movimientos.has_next %}
+                          <li class="page-item"> <a class="page-link" href="{{ url_for('vermovimientos', page=movimientos.next_num) }}">Siguiente</a></li>
+                      {% else %}
+                          <li class="page-item"><a class="page-link btn disabled" href="#">Siguiente</a></li>
+                      {% endif %}
+                    </ul>
+        </nav>
+</div>
+{% endblock %}

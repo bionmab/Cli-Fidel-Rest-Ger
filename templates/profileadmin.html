@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="bigger-profile-admin">
+  <div class="smaller-profile-admin">
+      <h3>Bienvenido: {{ name }} al Portal del Administrador</h3>
+      <p>Seleccione la opción deseada:</p>
+      <p class='text-center'><a href='{{url_for("adminclientes")}}' class='btn btn-success'>Admin De Clientes</a></p>
+  </div>
+</div>
+{% endblock %}

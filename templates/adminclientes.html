@@ -1,0 +1,90 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="container">
+  <h3 class='text-center text-muted mb-3'>Administración de Clientes</h3>
+
+  <div class="row">
+    <div class="col-8">
+      <strong>Busqueda por: {{ tag}}</strong>
+    </div>
+    <div class="col-4">
+      <form action="" method="post" autocomplete="off"> 
+        <div class="row">
+          <div class="col-6">
+            <input type="text" class="form-control" name="tag" id="tag"  placeholder="Ingrese Email"/> 
+          </div>
+        <div class="col-6" alignment="left">
+          <input type="submit" value="Search" class="form-control btn btn-info " name=""> 
+        </div>
+      </form> 
+    </div>
+  </div>
+
+    <p class='text-right'><a href='{{url_for("agregaclientes")}}' class='btn btn-success'>+Agregar Cliente</a></p>
+ 
+    <p class='text-right'><a href='{{url_for("adminclientes")}}' class='btn btn-dark'>Todos Los Clientes</a></p>
+  
+     <table class='table table-sm'>
+        <thead>
+          <th>IdCliente</th>
+          <th>Apellido</th>
+          <th>Nombre</th>
+          <th>Cumple</th>
+          <th>Teléfono</th>
+          <th>Email</th>
+          <th>Admin</th>
+          <th>Editar</th>
+          <th>Movimientos</th>
+          <th>Enviar</th>
+          <th>Eliminar</th>
+        </thead>
+        <tbody>
+            {% for cli in usuarios.items %}
+            <tr> 
+                <td>{{cli.id}}</td>
+                <td>{{cli.apellido}}</td>
+                <td>{{cli.nombre}}</td>
+                <td>{{cli.fechanac}}</td>
+                <td>{{cli.telefono}}</td>
+                <td>{{cli.email}}</td>
+                <td>{{cli.is_admin}}</td>
+                <td><a href='{{url_for("edit_user",idcliente=cli.id)}}' class='btn btn-secondary'>EDITAR</a></td>
+                <td><a href='{{url_for("edit_movimientos",idcliente=cli.id, page=1)}}' class='btn btn-primary'>MOVIMIENTOS</a></td>
+                <td><a href='{{url_for("email_user",idcliente=cli.id)}}' class='btn btn-secondary' onclick='return confirm("ESTÁ SEGURO QUE DESEA ENVIAR UN EMAIL AL CLIENTE?")'>EMAIL</a></td>
+                <td><a href='{{url_for("delete_user",idcliente=cli.id)}}' class='btn btn-danger' onclick='return confirm("ESTÁ SEGURO QUE DESEA ELIMINAR AL CLIENTE?")'>ELIMINAR</a></td>             
+            </tr>
+            {%endfor%}
+        </tbody>
+      </table>
+
+      <!--Controles de paginacion-->
+      <nav aria-label="Page navigation example">
+                  <ul class="pagination">
+                      {% if usuarios.has_prev %}
+                          <li class="page-item"> <a class="page-link" href="{{ url_for('adminclientes', page=usuarios.prev_num) }}">Anterior</a></li>
+                      {% else %}
+                          <li class="page-item"><a class="page-link btn disabled" href="#">Anterior</a></li>
+                      {% endif %}
+
+              {% for page in usuarios.iter_pages(left_edge=3, right_edge=3) %}
+                {% if page %}
+                  {% if page==usuarios.page %}
+                      <li class="page-item active"><a class="page-link" href="{{ url_for('adminclientes', page=page) }}">{{ page }}</a></li>
+                  {% else %}
+                      <li class="page-item"><a class="page-link" href="{{ url_for('adminclientes', page=page) }}">{{ page }}</a></li>
+                  {% endif %}
+                {% else %}
+                    <li class="page-item disabled" id="example_ellipsis"><a href="#" class="page-link">…</a></li> 
+                {% endif %}
+              {% endfor %}
+
+                      {% if usuarios.has_next %}
+                          <li class="page-item"> <a class="page-link" href="{{ url_for('adminclientes', page=usuarios.next_num) }}">Siguiente</a></li>
+                      {% else %}
+                          <li class="page-item"><a class="page-link btn disabled" href="#">Siguiente</a></li>
+                      {% endif %}
+                    </ul>
+        </nav>
+</div>
+{% endblock %}

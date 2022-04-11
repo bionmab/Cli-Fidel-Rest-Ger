@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="container">
+<p class='text-right'><a href='{{url_for("adminclientes")}}' class='btn btn-success'>Volver Atras</a></p>
+<div class='row mt-5'>
+    <div class='col-4 mx-auto'>
+      <h4 class='text-center'>Modificación de Usuario</h4><hr>
+      <form action="{{url_for('actualizar_user')}}" method='post'>
+        {# Enviar el id en un campo oculto #}
+        <input type="hidden" name="id" value="{{cliente.id}}">
+        <div class='form-group'>
+            <label for="name">Apellido: </label>
+            <input value="{{cliente.apellido}}" type='text' id="apellido" name='apellido' required class='form-control'>  
+          </div>
+        <div class='form-group'>
+          <label for="name">Nombre: </label>
+          <input value="{{cliente.nombre}}" type='text' id="nombre" name='nombre' required class='form-control'>  
+        </div>
+        <div class='form-group'>
+          <label for="name">Cumpleaños: </label>
+          <input value="{{cliente.fechanac}}" type="date" id="fechanac" name='fechanac' required class='form-control'>  
+        </div>
+        <div class='form-group'>
+          <label for="name">Teléfono de Contacto: </label>
+          <input value="{{cliente.telefono}}" type='text' id="telefono" name='telefono' required class='form-control'>  
+        </div>
+        <div class='form-group'>
+          <label>Email:</label>
+          <input value="{{cliente.email}}" type='email' id="email" name='email' required class='form-control'>  
+        </div>
+        <div class='form-group'>
+          <label><input type="checkbox" name="tipo"> Administrador</label>
+      </div>
+        <input type='submit' id="send-signup" name='signup' value='Confirmar' class='btn btn-success'>
+      </form>
+      <div class="separador"></div>
+    </div>
+  </div>
+</div>
+{% endblock %}
